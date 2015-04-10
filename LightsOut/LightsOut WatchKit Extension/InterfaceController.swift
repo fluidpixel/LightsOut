@@ -82,6 +82,7 @@ class InterfaceController: WKInterfaceController {
     
     var groups:[WKInterfaceGroup]!
     var playing:Bool = false
+    var moves:Int = 0
     
     var onOff:[Bool] = [Bool](count: 16, repeatedValue: false) {
         didSet {
@@ -108,6 +109,7 @@ class InterfaceController: WKInterfaceController {
             onOff[i] = drand48() < 0.5
         }
         playing = true
+        moves = 0
     }
 
     func invertState(x:Int, y:Int) {
@@ -127,13 +129,19 @@ class InterfaceController: WKInterfaceController {
             self.invertState(x+1, y: y-1)
             self.invertState(x+1, y: y)
             self.invertState(x+1, y: y+1)
+            moves++
             
             if allLightsAreOff {
+                self.setTitle("Win \(moves)")
                 playing = false
                 self.setAllLightsOff()
                 delay(0.25) {
                     self.randomiseLights()
+                    self.setTitle("Moves \(self.moves)")
                 }
+            }
+            else {
+                self.setTitle("Moves \(moves)")
             }
         }
     }
