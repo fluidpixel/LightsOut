@@ -94,7 +94,7 @@ class InterfaceController: WKInterfaceController {
         }
     }
     var allLightsAreOff:Bool {
-        return !onOff.reduce(false, |)
+        return !onOff.reduce(false) { $0 || $1 }
     }
     func setAllLightsOff() {
         for i in 0 ..< 16 {
