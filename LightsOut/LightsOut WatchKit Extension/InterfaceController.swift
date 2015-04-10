@@ -9,6 +9,8 @@
 import WatchKit
 import Foundation
 
+internal var lastScore:Int? = nil
+
 func delay(time:NSTimeInterval, block: ()->() ) {
     dispatch_after(
         dispatch_time(DISPATCH_TIME_NOW, Int64(time * NSTimeInterval(NSEC_PER_SEC))),
@@ -81,7 +83,6 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var grp_4thFl_4 : WKInterfaceGroup!
     
     var groups:[WKInterfaceGroup]!
-    var playing:Bool = false
     var moves:Int = 0
     
     var onOff:[Bool] = [Bool](count: 16, repeatedValue: false) {
@@ -108,7 +109,6 @@ class InterfaceController: WKInterfaceController {
         for i in 0 ..< 16 {
             onOff[i] = drand48() < 0.5
         }
-        playing = true
         moves = 0
     }
 
@@ -119,31 +119,29 @@ class InterfaceController: WKInterfaceController {
     }
     
     func press(x:Int, y:Int) {
-        if playing {
-            self.invertState(x-1, y: y-1)
-            self.invertState(x-1, y: y)
-            self.invertState(x-1, y: y+1)
-            self.invertState(x,   y: y-1)
-            self.invertState(x,   y: y)
-            self.invertState(x,   y: y+1)
-            self.invertState(x+1, y: y-1)
-            self.invertState(x+1, y: y)
-            self.invertState(x+1, y: y+1)
-            moves++
-            
-            if allLightsAreOff {
-                self.setTitle("Win \(moves)")
-                playing = false
-                self.setAllLightsOff()
-                delay(0.25) {
-                    self.randomiseLights()
-                    self.setTitle("Moves \(self.moves)")
-                }
-            }
-            else {
-                self.setTitle("Moves \(moves)")
+        
+        self.invertState(x-1, y: y-1)
+        self.invertState(x-1, y: y)
+        self.invertState(x-1, y: y+1)
+        self.invertState(x,   y: y-1)
+        self.invertState(x,   y: y)
+        self.invertState(x,   y: y+1)
+        self.invertState(x+1, y: y-1)
+        self.invertState(x+1, y: y)
+        self.invertState(x+1, y: y+1)
+        moves++
+        
+        if allLightsAreOff {
+            self.setTitle("Win \(moves)")
+            delay(0.25) {
+                lastScore = self.moves
+                self.popController()
             }
         }
+        else {
+            self.setTitle("Moves \(moves)")
+        }
+        
     }
     
     override func awakeWithContext(context: AnyObject?) {
@@ -169,4 +167,5 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    
 }
