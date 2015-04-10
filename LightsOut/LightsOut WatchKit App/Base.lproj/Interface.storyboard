@@ -198,6 +198,7 @@
                                         </group>
                                         <group width="0.050000000000000003" height="1" alignment="left" radius="0.0" spacing="0.0" id="cZd-sa-e3D" userLabel="right space"/>
                                     </items>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </group>
                                 <group width="1" height="0.050000000000000003" alignment="left" radius="0.0" spacing="0.0" id="Yfb-ik-bDV" userLabel="bottom space"/>
                             </items>
