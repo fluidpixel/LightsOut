@@ -9,8 +9,6 @@
 import WatchKit
 import Foundation
 
-internal var lastScore:Int? = nil
-
 func delay(time:NSTimeInterval, block: ()->() ) {
     dispatch_after(
         dispatch_time(DISPATCH_TIME_NOW, Int64(time * NSTimeInterval(NSEC_PER_SEC))),
@@ -19,9 +17,33 @@ func delay(time:NSTimeInterval, block: ()->() ) {
 }
 
 class InterfaceController: WKInterfaceController {
-    
+	
+	
     // MARK: IBOutlets
-    
+	@IBOutlet weak var highScoreGroup: WKInterfaceGroup!
+	@IBOutlet weak var resultGroup: WKInterfaceGroup!
+	@IBOutlet weak var playGroup: WKInterfaceGroup!
+	@IBOutlet weak var playButton: WKInterfaceButton!
+	@IBOutlet weak var buildingGroup: WKInterfaceGroup!
+	
+	@IBOutlet var resultLabel:WKInterfaceLabel!
+	@IBOutlet var highScoreLabel:WKInterfaceLabel!
+	
+	var highScore:Int = Int.max {
+		didSet {
+			highScoreLabel.setText("High Score \(highScore)")
+		}
+	}
+	
+	var lastScore:Int = 0 {
+		didSet {
+			if lastScore < highScore {
+				highScore = lastScore
+			}
+			resultLabel.setText("Your Score \(lastScore)")
+		}
+	}
+	
     @IBAction func ab1stFl_1() { press(0, y: 0) }
     @IBAction func ab1stFl_2() { press(0, y: 1) }
     @IBAction func ab1stFl_3() { press(0, y: 2) }
@@ -130,12 +152,16 @@ class InterfaceController: WKInterfaceController {
         self.invertState(x+1, y: y)
         self.invertState(x+1, y: y+1)
         moves++
-        
+		
+		if moves > 4 {
+			setAllLightsOff()
+		}
+		
         if allLightsAreOff {
             self.setTitle("Win \(moves)")
+			lastScore = self.moves
             delay(0.25) {
-                lastScore = self.moves
-                self.popController()
+                self.gameComplete()
             }
         }
         else {
@@ -143,10 +169,21 @@ class InterfaceController: WKInterfaceController {
         }
         
     }
-    
+	
+	func gameComplete () {
+		resultGroup.setHidden(false)
+		highScoreGroup.setHidden(false)
+		playGroup.setHidden(false)
+		buildingGroup.setHidden(true)
+	}
+	
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-    
+		
+		resultGroup.setHidden(true)
+		highScoreGroup.setHidden(true)
+		playGroup.setHidden(true)
+		buildingGroup.setHidden(false)
         // Configure interface objects here.
         
         groups = [ grp_1stFl_1, grp_1stFl_2, grp_1stFl_3, grp_1stFl_4, grp_2ndFl_1, grp_2ndFl_2,
@@ -167,5 +204,12 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+	@IBAction func replayAction() {
+		resultGroup.setHidden(true)
+		highScoreGroup.setHidden(true)
+		playGroup.setHidden(true)
+		buildingGroup.setHidden(false)
+		randomiseLights()
+	}
     
 }

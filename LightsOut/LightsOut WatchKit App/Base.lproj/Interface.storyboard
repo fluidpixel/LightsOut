@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R42-YP-Nic">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
         <!--Lights Out-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller title="Lights Out" backgroundImage="LightsOut2" contentMode="scaleAspectFit" spacing="0.0" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="LightsOut_WatchKit_App" customModuleProvider="target">
+                <controller title="Lights Out" backgroundImage="LightsOut2" contentMode="scaleAspectFit" spacing="0.0" hidesWhenLoading="NO" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="LightsOut_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group width="1" height="1" alignment="left" backgroundImage="LightsOut2" layout="vertical" radius="0.0" spacing="0.0" id="mNz-C0-v8P">
                             <items>
+                                <group width="1" height="0.34999999999999998" alignment="left" id="gYt-gc-yeC" userLabel="Result">
+                                    <items>
+                                        <label width="1" height="1" alignment="center" text="Your Score 50" textAlignment="center" numberOfLines="2" id="2kB-H9-EKY"/>
+                                    </items>
+                                </group>
+                                <group width="1" height="0.34999999999999998" alignment="left" id="b09-dg-NVc" userLabel="High Score">
+                                    <items>
+                                        <label width="1" height="1" alignment="center" text="High Score 25" textAlignment="center" numberOfLines="2" id="lYW-t6-cWY"/>
+                                    </items>
+                                </group>
+                                <group width="1" height="0.25" alignment="left" id="CKc-aT-y3B" userLabel="Play">
+                                    <items>
+                                        <button width="0.75" height="1" alignment="center" alpha="0.80000000000000004" title="REPLAY" id="EDU-Dx-yqC">
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="replayAction" destination="AgC-eL-Hgc" id="JHR-AS-24k"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
                                 <group width="1" height="0.050000000000000003" alignment="left" radius="0.0" spacing="0.0" id="jYW-sx-9sO" userLabel="top space"/>
-                                <group width="1" height="0.90000000000000002" alignment="left" radius="0.0" spacing="0.0" id="9Kk-F8-tfd">
+                                <group width="1" height="0.90000000000000002" alignment="left" hidden="YES" radius="0.0" spacing="0.0" id="9Kk-F8-tfd" userLabel="buildingGroup">
                                     <items>
                                         <group width="0.050000000000000003" height="1" alignment="left" radius="0.0" spacing="0.0" id="9IV-9l-nRP" userLabel="left space"/>
                                         <group width="0.90000000000000002" height="1" alignment="left" layout="vertical" radius="0.0" spacing="0.0" id="JOY-gn-vvv">
@@ -221,6 +241,7 @@
                         <outlet property="btn_4thFl_2" destination="Cdd-7G-gqB" id="GsM-NE-EMQ"/>
                         <outlet property="btn_4thFl_3" destination="U0p-z8-bku" id="jXg-Ba-xbw"/>
                         <outlet property="btn_4thFl_4" destination="GPd-7U-mNf" id="788-Gs-WLh"/>
+                        <outlet property="buildingGroup" destination="9Kk-F8-tfd" id="jmc-V8-f4R"/>
                         <outlet property="grp_1stFl_1" destination="No2-tU-t4o" id="Q61-hI-iRg"/>
                         <outlet property="grp_1stFl_2" destination="J2P-Me-D4k" id="MzY-3t-2EW"/>
                         <outlet property="grp_1stFl_3" destination="Mzg-b4-K4H" id="xMM-nH-vPC"/>
@@ -237,44 +258,16 @@
                         <outlet property="grp_4thFl_2" destination="qFA-oB-jp2" id="Fwv-1t-n7q"/>
                         <outlet property="grp_4thFl_3" destination="0dW-CL-nL4" id="HDB-Mk-ANL"/>
                         <outlet property="grp_4thFl_4" destination="3nW-DS-gOT" id="Ude-tO-8TM"/>
+                        <outlet property="highScoreGroup" destination="b09-dg-NVc" id="8j0-7c-de8"/>
+                        <outlet property="highScoreLabel" destination="lYW-t6-cWY" id="EFP-v2-Kkh"/>
+                        <outlet property="playButton" destination="EDU-Dx-yqC" id="HpN-NF-gLP"/>
+                        <outlet property="playGroup" destination="CKc-aT-y3B" id="Fbe-Qj-0oE"/>
+                        <outlet property="resultGroup" destination="gYt-gc-yeC" id="5uB-M8-Rm8"/>
+                        <outlet property="resultLabel" destination="2kB-H9-EKY" id="XEJ-Fy-FGZ"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="465" y="285"/>
-        </scene>
-        <!--StartScreen-->
-        <scene sceneID="L1p-au-8fa">
-            <objects>
-                <controller backgroundImage="LightsOut2" id="R42-YP-Nic" userLabel="StartScreen" customClass="StartScreen" customModule="LightsOut_WatchKit_Extension">
-                    <items>
-                        <group width="1" height="0.34999999999999998" alignment="left" id="dqv-rE-6cq" userLabel="Result">
-                            <items>
-                                <label width="1" height="1" alignment="center" text="Your Score 50" textAlignment="center" numberOfLines="2" id="71m-Li-NAE"/>
-                            </items>
-                        </group>
-                        <group width="1" height="0.34999999999999998" alignment="left" id="Dsy-ri-7vV" userLabel="High Score">
-                            <items>
-                                <label width="1" height="1" alignment="center" text="High Score 25" textAlignment="center" numberOfLines="2" id="GQF-z0-Uqe"/>
-                            </items>
-                        </group>
-                        <group width="1" height="0.25" alignment="left" id="pdN-T4-thp" userLabel="Play">
-                            <items>
-                                <button width="0.75" height="1" alignment="center" alpha="0.80000000000000004" title="Play" id="xki-f5-Acr">
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <connections>
-                                        <segue destination="AgC-eL-Hgc" kind="push" id="c1O-UF-GVB"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
-                    </items>
-                    <connections>
-                        <outlet property="highScoreLabel" destination="GQF-z0-Uqe" id="yu7-f3-Qoc"/>
-                        <outlet property="resultLabel" destination="71m-Li-NAE" id="7vV-mo-laP"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="173" y="371"/>
+            <point key="canvasLocation" x="272" y="372"/>
         </scene>
     </scenes>
 </document>

@@ -19,7 +19,6 @@
 		DA2F6AC21AD7C602003C49B3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2F6AC01AD7C602003C49B3 /* Interface.storyboard */; };
 		DA2F6AC41AD7C602003C49B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2F6AC31AD7C602003C49B3 /* Images.xcassets */; };
 		DA2F6AC71AD7C602003C49B3 /* LightsOut WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA2F6AAF1AD7C602003C49B3 /* LightsOut WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DA7BFF121AD81F7800A52D6A /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BFF111AD81F7800A52D6A /* StartScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +78,6 @@
 		DA2F6ABF1AD7C602003C49B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA2F6AC11AD7C602003C49B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		DA2F6AC31AD7C602003C49B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		DA7BFF111AD81F7800A52D6A /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +169,6 @@
 			isa = PBXGroup;
 			children = (
 				DA2F6AB31AD7C602003C49B3 /* InterfaceController.swift */,
-				DA7BFF111AD81F7800A52D6A /* StartScreen.swift */,
 				DA2F6AB51AD7C602003C49B3 /* Images.xcassets */,
 				DA2F6AB11AD7C602003C49B3 /* Supporting Files */,
 			);
@@ -382,7 +379,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA7BFF121AD81F7800A52D6A /* StartScreen.swift in Sources */,
 				DA2F6AB41AD7C602003C49B3 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
