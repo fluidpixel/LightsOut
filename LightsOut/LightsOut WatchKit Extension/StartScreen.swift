@@ -14,7 +14,7 @@ class StartScreen: WKInterfaceController {
     @IBOutlet var resultLabel:WKInterfaceLabel!
     @IBOutlet var highScoreLabel:WKInterfaceLabel!
     
-    var highScore:Int? = nil
+    var highScore:Int = Int.max
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -42,8 +42,8 @@ class StartScreen: WKInterfaceController {
             lastScore = nil
             
             resultLabel.setText("You did it in\n\(newScore) moves")
-            
-            if newScore < highScore ?? Int.max {
+			
+            if newScore < highScore {
                 highScore = newScore
             }
         }
@@ -52,10 +52,9 @@ class StartScreen: WKInterfaceController {
             resultLabel.setText("")
         }
         
-        if let hs = highScore {
-            highScoreLabel.setText("HighScore\n\(hs) moves")
-        }
-        else {
+        if highScore < Int.max {
+            highScoreLabel.setText("HighScore\n\(highScore) moves")
+        } else {
             highScoreLabel.setText("")
         }
     }
