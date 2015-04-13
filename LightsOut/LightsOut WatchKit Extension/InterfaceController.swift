@@ -153,9 +153,9 @@ class InterfaceController: WKInterfaceController {
         self.invertState(x+1, y: y+1)
         moves++
 		
-		if moves > 4 {
-			setAllLightsOff()
-		}
+//		if moves > 4 {
+//			setAllLightsOff()
+//		}
 		
         if allLightsAreOff {
             self.setTitle("Win \(moves)")
