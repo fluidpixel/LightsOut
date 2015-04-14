@@ -106,12 +106,15 @@ class InterfaceController: WKInterfaceController {
     
     var groups:[WKInterfaceGroup]!
     var moves:Int = 0
-    
     var onOff:[Bool] = [Bool](count: 16, repeatedValue: false) {
         didSet {
+			
             for i in 0 ..< 16 {
                 //if oldValue[i] != onOff[i] {
-                    groups[i].setBackgroundImageNamed(onOff[i] ? "Window_light" : "WindowDark")
+                    groups[i].setBackgroundImageNamed(onOff[i] ? "GhostWindowTestAni" : "WindowDark")
+				if onOff[i] {
+					groups[i].startAnimatingWithImagesInRange(NSMakeRange(0, 3), duration: 1, repeatCount: 0)
+				}
                 //}
             }
         }
